@@ -53,3 +53,18 @@ pypi_test:
 
 pypi:
 	@twine upload dist/* -u $(PYPI_USERNAME)
+
+# ----------------------------------
+#      PREDICT API & DOCKER
+# ----------------------------------
+run_api:
+	uvicorn api.fast:app --reload  # load web server with code autoreload
+
+docker_build:
+	docker build . -t api
+
+docker_run:
+	docker run -p 8080:8000 api
+
+docker_sh:
+	docker run -it api sh
