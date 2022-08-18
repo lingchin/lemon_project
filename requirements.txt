@@ -22,6 +22,10 @@ gcsfs
 google-cloud-storage
 mlflow
 s3fs
+fastapi
+uvicorn
+Pillow
+python-multipart
 
 # utilities
 six>=1.14

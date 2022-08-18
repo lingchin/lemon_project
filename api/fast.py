@@ -1,6 +1,8 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, File, UploadFile
+from PIL import Image
 from fastapi.middleware.cors import CORSMiddleware
-import joblib
+import numpy as np
+from tensorflow.keras import models
 
 app = FastAPI()
 
@@ -11,19 +13,25 @@ app.add_middleware(
     allow_methods=["*"],  # Allows all methods
     allow_headers=["*"],  # Allows all headers
 )
+
+pred_model = models.load_model('models/basic_model_02')
+print("model loaded")
+
 @app.get("/")
 def index():
     return {"greeting": "They call me mellow yellow..."}
 
-# @app.get("/predict")
-# def predict(new_image): #new_image is a jpg does it need to be cleaned/resized?
-#     load_model = joblib.load('model.joblib'). OR BELOW
-#     load_model = tf.keras.models.load_model('saved_model/my_model')
-#     print("model loaded")
-#     health_predict = load_model.predict(new_image)
-#     print("dtype", type(health_predict)) #check dtype
-#     if health_predict[0] == 0:
-#         health = "Unhealthy"
-#     else:
-#         health = "Healthy"
-#     return {"health": health}
+
+
+@app.post("/predict")
+def predict(file: UploadFile = File(...)): #new_image is a jpg does it need to be cleaned/resized?
+    image = Image.open(file.file).resize((256,256))
+    image = np.array(image)
+    print("image shape", image.shape)
+    x_image = np.expand_dims(image,axis=0)
+    print("image ready...", x_image.shape)
+
+    health_predict = pred_model.predict(x_image)
+    print("dtype", type(health_predict), health_predict[0][0]) #check dtype
+
+    return {"health": float(health_predict[0][0])}
