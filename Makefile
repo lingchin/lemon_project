@@ -64,7 +64,7 @@ docker_build:
 	docker build . -t api
 
 docker_run:
-	docker run -p 8080:8000 api
+	docker run -p PORT=8080:8000 -e PORT=8000 api
 
 docker_sh:
 	docker run -it api sh
