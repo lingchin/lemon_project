@@ -60,11 +60,12 @@ pypi:
 run_api:
 	uvicorn api.fast:app --reload  # load web server with code autoreload
 
+#this is louise's project id, may need to change for other users
 docker_build:
-	docker build . -t api
+	docker build . -t asia.gcr.io/wagon-bootcamp-356500/lemon_project_api
 
 docker_run:
-	docker run -p 8080:8000 api
+	docker run -p 8080:8000 -e PORT=8000 asia.gcr.io/wagon-bootcamp-356500/lemon_project_api 
 
 docker_sh:
 	docker run -it api sh

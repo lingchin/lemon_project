@@ -8,4 +8,4 @@ COPY models /models
 COPY api /api
 COPY lemon_project /lemon_project
 
-CMD uvicorn api.fast:app --host 0.0.0.0
+CMD uvicorn api.fast:app --host 0.0.0.0 --port $PORT
