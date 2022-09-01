@@ -14,7 +14,7 @@ app.add_middleware(
     allow_headers=["*"],  # Allows all headers
 )
 
-pred_model = models.load_model('models/basic_model_02')
+pred_model = models.load_model('model')
 print("model loaded")
 
 @app.get("/")

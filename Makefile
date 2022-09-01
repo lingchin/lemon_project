@@ -69,3 +69,9 @@ docker_run:
 
 docker_sh:
 	docker run -it api sh
+
+docker_push:
+	docker push asia.gcr.io/wagon-bootcamp-356500/lemon_project_api
+
+docker_deploy:
+	gcloud run deploy --image asia.gcr.io/wagon-bootcamp-356500/lemon_project_api --region asia-east1
