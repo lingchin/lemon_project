@@ -35,3 +35,4 @@ termcolor
 
 # model
 tensorflow
+tensorflow_hub
