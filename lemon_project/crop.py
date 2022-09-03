@@ -9,14 +9,19 @@ def crop_img(image,model):
 
     # running inference
     results = model(X)
+    
+    try:
+        first_lemon_id = np.argwhere(results['detection_classes'].numpy()[0] == 55)[0][0] # class 55 = orange
 
-    first_lemon_id = np.argwhere(results['detection_classes'].numpy()[0] == 55)[0][0] # class 55 = orange
+        bbox = (results['detection_boxes'][0][first_lemon_id] * 640).numpy().astype(int)
 
-    bbox = (results['detection_boxes'][0][first_lemon_id] * 640).numpy().astype(int)
+        ymin, xmin, ymax, xmax = bbox
 
-    ymin, xmin, ymax, xmax = bbox
+        padding = 8
+        new_img = X[0][ymin-padding:ymax+padding, xmin-padding:xmax+padding]
 
-    padding = 8
-    new_img = X[0][ymin-padding:ymax+padding, xmin-padding:xmax+padding]
+        return new_img
+    except:
+        return "No lemon found"
 
-    return new_img
+

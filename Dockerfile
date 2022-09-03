@@ -4,7 +4,7 @@ COPY requirements.txt /requirements.txt
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-COPY models/VGG16_model_1_Sep /models
+COPY models/VGG16_model_1_Sep /model
 COPY api /api
 COPY lemon_project /lemon_project
 

@@ -62,11 +62,18 @@ run_api:
 
 #this is louise's project id, may need to change for other users
 docker_build:
-	docker build . -t asia.gcr.io/wagon-bootcamp-356500/lemon_project_api
+	docker build . -t asia.gcr.io/wagon-bootcamp-356500/lemon_project_api2
 
 docker_run:
-	docker run -p 8080:8000 -e PORT=8000 asia.gcr.io/wagon-bootcamp-356500/lemon_project_api
+	docker run -p 8080:8000 -e PORT=8000 asia.gcr.io/wagon-bootcamp-356500/lemon_project_api2
 
 
-docker_sh:
-	docker run -it api sh
+# docker_sh:
+# 	docker run -it api sh
+
+docker_push:
+	docker push asia.gcr.io/wagon-bootcamp-356500/lemon_project_api2
+
+docker_deploy:
+	gcloud run deploy --image asia.gcr.io/wagon-bootcamp-356500/lemon_project_api2 --region asia-east1 --memory 4Gi
+
