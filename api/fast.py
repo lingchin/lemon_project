@@ -32,6 +32,8 @@ def index():
 def predict(file: UploadFile = File(...)): #new_image is a jpg does it need to be cleaned/resized?
     image = Image.open(file.file).resize((640,640))
     image = crop_img(np.array(image),model=crop_model)
+    if type(image) == str:
+        return {"health": "No lemon found"}
     image = Image.fromarray(image).resize((256,256))
     # print("image shape", image.shape)
     x_image = np.expand_dims(np.array(image),axis=0)
