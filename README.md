@@ -1,6 +1,6 @@
 # Data analysis
 - Document here the project: lemon_project
-- Description: Project Description
+- Description: Train a model to predict health of lemons for quality control
 - Data Source: https://github.com/softwaremill/lemon-dataset  :lemon:
 - Type of analysis: Deep Learning using CNN Transfer Learning Model VGG16
 
