@@ -1,8 +1,8 @@
 # Data analysis
 - Document here the project: lemon_project
 - Description: Project Description
-- Data Source:
-- Type of analysis:
+- Data Source:https://github.com/softwaremill/lemon-dataset
+- Type of analysis:Deep Learning usinng CNN VGG16
 
 Please document the project the better you can.
 
