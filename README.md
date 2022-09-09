@@ -2,7 +2,7 @@
 - Document here the project: lemon_project
 - Description: Project Description
 - Data Source: https://github.com/softwaremill/lemon-dataset  :lemon:
-- Type of analysis: Deep Learning usinng CNN Transfer Learning Model VGG16
+- Type of analysis: Deep Learning using CNN Transfer Learning Model VGG16
 
 Please document the project the better you can.
 
